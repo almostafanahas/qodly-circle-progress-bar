@@ -9,7 +9,12 @@ const commonSettings: TSetting[] = [
   },
   {
     key: 'showPercentage',
-    label: 'Show Text',
+    label: 'Show Percentage',
+    type: ESetting.CHECKBOX,
+  },
+  {
+    key: 'counterClockwise',
+    label: 'Counter Clockwise',
     type: ESetting.CHECKBOX,
   },
   {

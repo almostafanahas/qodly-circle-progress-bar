@@ -61,12 +61,14 @@ export default {
     minValue: 0,
     maxValue: 100,
     strokeWidth: 8,
+    counterClockwise: false,
     style:{ height: 200, width: 200 },
   },
 } as T4DComponentConfig<ICircleProgressbarProps>;
 
 export interface ICircleProgressbarProps extends webforms.ComponentProps {
   percentage: number;
+  showPercentage: boolean;
   minValue: number;
   maxValue: number;
   strokeWidth: number;
@@ -74,4 +76,5 @@ export interface ICircleProgressbarProps extends webforms.ComponentProps {
   trailColor: string;
   textColor: string;
   textSize: number;
+  counterClockwise: boolean;
 }

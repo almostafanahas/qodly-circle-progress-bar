@@ -6,7 +6,7 @@ import { ICircleProgressbarProps } from './CircleProgressbar.config';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, minValue, maxValue, strokeWidth, pathColor, trailColor, textColor, textSize, style, className, classNames = [] }) => {
+const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, minValue, maxValue, strokeWidth, pathColor, trailColor, textColor, textSize, style, counterClockwise, className, classNames = [] }) => {
   const { connect } = useRenderer();
   const [value, setValue] = useState(() => percentage);
   const {
@@ -19,7 +19,7 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, minValue, 
     const listener = async (/* event */) => {
       const v = await ds.getValue<number>();
       setValue(v);
-      console.log(v);
+     // console.log(v);
     };
 
     listener();
@@ -34,7 +34,7 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, minValue, 
 
   return (
     <div ref={connect} style={style} className={cn(className, classNames)}>
-        <CircularProgressbar minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} value={value} text={`${value}%`} 
+        <CircularProgressbar minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} value={value} text={showPercentage ? `${value}%` : ''} counterClockwise={counterClockwise}
           styles={buildStyles({
             // Rotation of path and trail, in number of turns (0-1)
             //rotation: 0.25,
