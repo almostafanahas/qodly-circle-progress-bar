@@ -58,6 +58,14 @@ const colorSettings: TSetting[] = [
   },
 ]
 
+const cssSettings: TSetting[] = [
+  {
+    key: 'cssClass',
+    label: 'CSS Class',
+    type: ESetting.CSSCLASS_SELECTOR,
+  },
+];
+
 const Settings: TSetting[] = [
   {
     key: 'properties',
@@ -65,13 +73,27 @@ const Settings: TSetting[] = [
     type: ESetting.GROUP,
     components: commonSettings,
   },
+  ...load(DEFAULT_SETTINGS).filter(
+    'appearance',
+    'style',
+    'color',
+    'background',
+    'font',
+    'borders',
+    'borderRadius',
+  ),
   {
     key: 'colors',
     label: 'Colors',
     type: ESetting.GROUP,
     components: colorSettings,
   },
-  ...DEFAULT_SETTINGS,
+  {
+    key: 'css',
+    label: 'CSS',
+    type: ESetting.GROUP,
+    components: cssSettings,
+  },
 ];
 
 export const BasicSettings: TSetting[] = [

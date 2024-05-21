@@ -1,9 +1,12 @@
 import { useRenderer, useSources } from '@ws-ui/webform-editor';
 import cn from 'classnames';
 import { FC, useEffect, useState } from 'react';
+//import { easeQuadInOut } from 'd3-ease';
+//import AnimatedProgressProvider from './AnimatedProgressProvider';
+import RadialSeparators from './RadialSeparators';
 
 import { ICircleProgressbarProps } from './CircleProgressbar.config';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, minValue, maxValue, strokeWidth, pathColor, trailColor, textColor, textSize, style, counterClockwise, className, classNames = [] }) => {
@@ -34,30 +37,46 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
 
   return (
     <div ref={connect} style={style} className={cn(className, classNames)}>
-        <CircularProgressbar minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} value={value} text={showPercentage ? `${value}%` : ''} counterClockwise={counterClockwise}
-          styles={buildStyles({
-            // Rotation of path and trail, in number of turns (0-1)
-            //rotation: 0.25,
-        
-            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-            //strokeLinecap: 'butt',
-        
-            // Text size
-            textSize: `${textSize}`,
-        
-            // How long animation takes to go from one percentage to another, in seconds
-            pathTransitionDuration: 3,
-        
-            // Can specify path transition in more detail, or remove it entirely
-            // pathTransition: 'none',
-        
-            // Colors
-            pathColor: `${pathColor}`,
-            trailColor: `${trailColor}`,
-            textColor: `${textColor}`,
-            //backgroundColor: 'yellow',
-          })}
-        />
+      <CircularProgressbarWithChildren minValue={minValue}
+        maxValue={maxValue} 
+        strokeWidth={strokeWidth} 
+        value={value}
+        text={showPercentage ? `${percentage}%` : ''}
+        counterClockwise={counterClockwise}
+        styles={buildStyles({
+        // Rotation of path and trail, in number of turns (0-1)
+        //rotation: 0.25,
+            
+        // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+        //strokeLinecap: 'butt',
+            
+        // Text size
+        textSize: `${textSize}`,
+            
+        // How long animation takes to go from one percentage to another, in seconds
+        pathTransitionDuration: 3,
+            
+        // Can specify path transition in more detail, or remove it entirely
+        pathTransition: 'none',
+            
+        // Colors
+        pathColor: `${pathColor}`,
+        trailColor: `${trailColor}`,
+        textColor: `${textColor}`,
+        //backgroundColor: 'yellow',
+        })}
+      >
+        <RadialSeparators
+          count={12}
+          style={{
+            background: "#fff",
+            width: "2px",
+            // This needs to be equal to props.strokeWidth
+            height: `${10}%`
+          }}
+        >
+        </RadialSeparators>
+      </CircularProgressbarWithChildren>
     </div>
   );
 };

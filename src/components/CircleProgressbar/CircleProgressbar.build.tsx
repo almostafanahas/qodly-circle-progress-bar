@@ -2,8 +2,9 @@ import { useEnhancedNode } from '@ws-ui/webform-editor';
 import cn from 'classnames';
 import { FC } from 'react';
 import { ICircleProgressbarProps } from './CircleProgressbar.config';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import RadialSeparators from './RadialSeparators';
 
 const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, minValue, maxValue, strokeWidth, pathColor, trailColor, textColor, textSize, style, counterClockwise, className, classNames = [] }) => {
   const {
@@ -12,7 +13,7 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
 
   return (
     <div ref={connect} style={style} className={cn(className, classNames)}>
-      <CircularProgressbar minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} value={percentage} text={showPercentage ? `${percentage}%` : ''} counterClockwise={counterClockwise}
+      <CircularProgressbarWithChildren minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} value={percentage} text={showPercentage ? `${percentage}%` : ''} counterClockwise={counterClockwise}
       styles={buildStyles({
         // Rotation of path and trail, in number of turns (0-1)
         // rotation: 0.25,
@@ -34,7 +35,18 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
         trailColor: `${trailColor}`,
         textColor: `${textColor}`,
       })}
-      />
+      >
+        <RadialSeparators
+          count={5}
+          style={{
+            background: "#fff",
+            width: "2px",
+            // This needs to be equal to props.strokeWidth
+            height: `${strokeWidth}%`
+          }}
+        >
+        </RadialSeparators>
+      </CircularProgressbarWithChildren>
     </div>
   );
 };
