@@ -9,7 +9,7 @@ import { ICircleProgressbarProps } from './CircleProgressbar.config';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, strokeLine, minValue, maxValue, strokeWidth, bgColor, pathColor, trailColor, textColor, textSize, size, counterClockwise, countSep, colorSep, widthSep, className, classNames = [] }) => {
+const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, strokeLine, minValue, maxValue, strokeWidth, bgPadding, bgColor, pathColor, trailColor, textColor, textSize, size, counterClockwise, countSep, colorSep, widthSep, className, classNames = [] }) => {
   const { connect } = useRenderer();
   const [value, setValue] = useState(() => percentage);
   const {
@@ -40,7 +40,8 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
       <CircularProgressbarWithChildren minValue={minValue}
         maxValue={maxValue} 
         strokeWidth={strokeWidth}
-        background={true} 
+        background={true}
+        backgroundPadding={bgPadding} 
         value={value}
         text={showPercentage ? `${value}%` : ''}
         counterClockwise={counterClockwise}
@@ -73,7 +74,8 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
             background: `${colorSep}`,
             width: `${widthSep}`,
             // This needs to be equal to props.strokeWidth
-            height: `${strokeWidth}%`
+            height: `${strokeWidth}%`,
+            margin: bgPadding*3,
           }}
         >
         </RadialSeparators>

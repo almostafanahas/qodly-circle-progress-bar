@@ -6,14 +6,14 @@ import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-pro
 import 'react-circular-progressbar/dist/styles.css';
 import RadialSeparators from './RadialSeparators';
 
-const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, strokeLine, minValue, maxValue, strokeWidth, bgColor, pathColor, trailColor, textColor, textSize, size, counterClockwise, countSep, colorSep, widthSep, className, classNames = [] }) => {
+const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, strokeLine, minValue, maxValue, strokeWidth, bgPadding, bgColor, pathColor, trailColor, textColor, textSize, size, counterClockwise, countSep, colorSep, widthSep, className, classNames = [] }) => {
   const {
     connectors: { connect },
   } = useEnhancedNode();
 
   return (
     <div ref={connect} style={{height: `${size}`, width: `${size}`}} className={cn(className, classNames)}>
-      <CircularProgressbarWithChildren minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} background={true} value={percentage} text={showPercentage ? `${percentage}%` : ''} counterClockwise={counterClockwise}
+      <CircularProgressbarWithChildren minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} background={true} backgroundPadding={bgPadding} value={percentage} text={showPercentage ? `${percentage}%` : ''} counterClockwise={counterClockwise}
       styles={buildStyles({
         // Rotation of path and trail, in number of turns (0-1)
         // rotation: 0.25,
@@ -43,7 +43,8 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
             background: `${colorSep}`,
             width: `${widthSep}`,
             // This needs to be equal to props.strokeWidth
-            height: `${strokeWidth}%`
+            height: `${strokeWidth}%`,
+            margin: bgPadding*3,
           }}
         >
         </RadialSeparators>

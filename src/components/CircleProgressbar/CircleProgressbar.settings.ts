@@ -54,6 +54,11 @@ const commonSettings: TSetting[] = [
     type: ESetting.NUMBER_FIELD,
   },
   {
+    key: 'bgPadding',
+    label: 'Background Padding',
+    type: ESetting.NUMBER_FIELD,
+  },
+  {
     key: 'textSize',
     label: 'Text Size',
     hasLabel: true,
