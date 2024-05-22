@@ -9,7 +9,7 @@ import { ICircleProgressbarProps } from './CircleProgressbar.config';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, minValue, maxValue, strokeWidth, pathColor, trailColor, textColor, textSize, size, counterClockwise, countSep, colorSep, widthSep, className, classNames = [] }) => {
+const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, minValue, maxValue, strokeWidth, bgColor, pathColor, trailColor, textColor, textSize, size, counterClockwise, countSep, colorSep, widthSep, className, classNames = [] }) => {
   const { connect } = useRenderer();
   const [value, setValue] = useState(() => percentage);
   const {
@@ -39,7 +39,8 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
     <div ref={connect} style={{height: `${size}`, width: `${size}`}} className={cn(className, classNames)}>
       <CircularProgressbarWithChildren minValue={minValue}
         maxValue={maxValue} 
-        strokeWidth={strokeWidth} 
+        strokeWidth={strokeWidth}
+        background={true} 
         value={value}
         text={showPercentage ? `${value}%` : ''}
         counterClockwise={counterClockwise}
@@ -63,7 +64,7 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
         pathColor: `${pathColor}`,
         trailColor: `${trailColor}`,
         textColor: `${textColor}`,
-        //backgroundColor: 'yellow',
+        backgroundColor: `${bgColor}`,
         })}
       >
         <RadialSeparators

@@ -61,6 +61,7 @@ export default {
     minValue: 0,
     maxValue: 100,
     strokeWidth: 8,
+    bgColor: "#ffffff",
     pathColor: "#3e98c7",
     trailColor: "#d6d6d6",
     textColor: "#3e98c7",
@@ -81,6 +82,7 @@ export interface ICircleProgressbarProps extends webforms.ComponentProps {
   maxValue: number;
   size: string;
   strokeWidth: number;
+  bgColor: string,
   pathColor: string;
   trailColor: string;
   textColor: string;

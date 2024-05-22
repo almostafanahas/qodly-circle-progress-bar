@@ -48,18 +48,23 @@ const commonSettings: TSetting[] = [
 
 const colorSettings: TSetting[] = [
   {
+    key: 'bgColor',
+    label: 'Background',
+    type: ESetting.COLOR_PICKER,
+  },
+  {
     key: 'pathColor',
-    label: 'Path Color',
+    label: 'Path',
     type: ESetting.COLOR_PICKER,
   },
   {
     key: 'trailColor',
-    label: 'Trail Color',
+    label: 'Trail',
     type: ESetting.COLOR_PICKER,
   },
   {
     key: 'textColor',
-    label: 'Text Color',
+    label: 'Text',
     type: ESetting.COLOR_PICKER,
   },
 ]
