@@ -9,7 +9,7 @@ import { ICircleProgressbarProps } from './CircleProgressbar.config';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, minValue, maxValue, strokeWidth, pathColor, trailColor, textColor, textSize, style, counterClockwise, className, classNames = [] }) => {
+const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, minValue, maxValue, strokeWidth, pathColor, trailColor, textColor, textSize, size, counterClockwise, countSep, colorSep, widthSep, className, classNames = [] }) => {
   const { connect } = useRenderer();
   const [value, setValue] = useState(() => percentage);
   const {
@@ -36,12 +36,12 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
   }, [ds]);
 
   return (
-    <div ref={connect} style={style} className={cn(className, classNames)}>
+    <div ref={connect} style={{height: `${size}`, width: `${size}`}} className={cn(className, classNames)}>
       <CircularProgressbarWithChildren minValue={minValue}
         maxValue={maxValue} 
         strokeWidth={strokeWidth} 
         value={value}
-        text={showPercentage ? `${percentage}%` : ''}
+        text={showPercentage ? `${value}%` : ''}
         counterClockwise={counterClockwise}
         styles={buildStyles({
         // Rotation of path and trail, in number of turns (0-1)
@@ -57,7 +57,7 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
         pathTransitionDuration: 3,
             
         // Can specify path transition in more detail, or remove it entirely
-        pathTransition: 'none',
+        // pathTransition: 'none',
             
         // Colors
         pathColor: `${pathColor}`,
@@ -67,12 +67,12 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
         })}
       >
         <RadialSeparators
-          count={12}
+          count={countSep}
           style={{
-            background: "#fff",
-            width: "2px",
+            background: `${colorSep}`,
+            width: `${widthSep}`,
             // This needs to be equal to props.strokeWidth
-            height: `${10}%`
+            height: `${strokeWidth}%`
           }}
         >
         </RadialSeparators>

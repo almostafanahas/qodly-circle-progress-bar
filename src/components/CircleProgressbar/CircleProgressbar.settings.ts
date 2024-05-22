@@ -28,6 +28,12 @@ const commonSettings: TSetting[] = [
     type: ESetting.NUMBER_FIELD,
   },
   {
+    key: 'size',
+    label: 'Size',
+    hasLabel: true,
+    type: ESetting.UNITFIELD,
+  },
+  {
     key: 'strokeWidth',
     label: 'Stroke Width',
     type: ESetting.NUMBER_FIELD,
@@ -66,6 +72,25 @@ const cssSettings: TSetting[] = [
   },
 ];
 
+const radialSeparators: TSetting[] = [
+  {
+    key: 'countSep',
+    label: 'Number of Separators',
+    type: ESetting.NUMBER_FIELD,
+  },
+  {
+    key: 'colorSep',
+    label: 'Color',
+    type: ESetting.COLOR_PICKER,
+  },
+  {
+    key: 'widthSep',
+    label: 'Width',
+    hasLabel: true,
+    type: ESetting.UNITFIELD,
+  },
+];
+
 const Settings: TSetting[] = [
   {
     key: 'properties',
@@ -87,6 +112,12 @@ const Settings: TSetting[] = [
     label: 'Colors',
     type: ESetting.GROUP,
     components: colorSettings,
+  },
+  {
+    key: 'radialSep',
+    label: 'Radial Separators',
+    type: ESetting.GROUP,
+    components: radialSeparators,
   },
   {
     key: 'css',

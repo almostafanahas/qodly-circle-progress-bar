@@ -6,14 +6,14 @@ import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-pro
 import 'react-circular-progressbar/dist/styles.css';
 import RadialSeparators from './RadialSeparators';
 
-const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, minValue, maxValue, strokeWidth, pathColor, trailColor, textColor, textSize, style, counterClockwise, className, classNames = [] }) => {
+const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, minValue, maxValue, strokeWidth, pathColor, trailColor, textColor, textSize, size, counterClockwise, countSep, colorSep, widthSep, className, classNames = [] }) => {
   const {
     connectors: { connect },
   } = useEnhancedNode();
 
   return (
-    <div ref={connect} style={style} className={cn(className, classNames)}>
-      <CircularProgressbarWithChildren minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} value={percentage} text={showPercentage ? `${percentage}%` : ''} counterClockwise={counterClockwise}
+    <div ref={connect} style={{height: `${size}`, width: `${size}`}} className={cn(className, classNames)}>
+      <CircularProgressbarWithChildren minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} /*background={true}*/ value={percentage} text={showPercentage ? `${percentage}%` : ''} counterClockwise={counterClockwise}
       styles={buildStyles({
         // Rotation of path and trail, in number of turns (0-1)
         // rotation: 0.25,
@@ -34,13 +34,14 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
         pathColor: `${pathColor}`,
         trailColor: `${trailColor}`,
         textColor: `${textColor}`,
+        //backgroundColor: "lightgray",
       })}
       >
         <RadialSeparators
-          count={5}
+          count={countSep} // number of separators
           style={{
-            background: "#fff",
-            width: "2px",
+            background: `${colorSep}`,
+            width: `${widthSep}`,
             // This needs to be equal to props.strokeWidth
             height: `${strokeWidth}%`
           }}
