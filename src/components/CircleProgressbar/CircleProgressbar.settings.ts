@@ -18,6 +18,21 @@ const commonSettings: TSetting[] = [
     type: ESetting.CHECKBOX,
   },
   {
+    key: 'strokeLine',
+    label: 'Stroke Line Caps',
+    type: ESetting.SELECT,
+    options:[
+      {
+        label: "Flat Corners",
+        value: "butt"
+      },
+      {
+        label: "Round Corners",
+        value: "round"
+      },
+    ]
+  },
+  {
     key: 'minValue',
     label: 'Min Value',
     type: ESetting.NUMBER_FIELD,

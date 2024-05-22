@@ -58,6 +58,7 @@ export default {
   defaultProps: {
     percentage: 10,
     showPercentage: true,
+    strokeLine: "butt",
     minValue: 0,
     maxValue: 100,
     strokeWidth: 8,
@@ -78,6 +79,7 @@ export default {
 export interface ICircleProgressbarProps extends webforms.ComponentProps {
   percentage: number;
   showPercentage: boolean;
+  strokeLine: string;
   minValue: number;
   maxValue: number;
   size: string;

@@ -6,7 +6,7 @@ import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-pro
 import 'react-circular-progressbar/dist/styles.css';
 import RadialSeparators from './RadialSeparators';
 
-const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, minValue, maxValue, strokeWidth, bgColor, pathColor, trailColor, textColor, textSize, size, counterClockwise, countSep, colorSep, widthSep, className, classNames = [] }) => {
+const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercentage, strokeLine, minValue, maxValue, strokeWidth, bgColor, pathColor, trailColor, textColor, textSize, size, counterClockwise, countSep, colorSep, widthSep, className, classNames = [] }) => {
   const {
     connectors: { connect },
   } = useEnhancedNode();
@@ -19,7 +19,7 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
         // rotation: 0.25,
     
         // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-        // strokeLinecap: 'butt',
+        strokeLinecap: strokeLine,
     
         // Text size
         textSize: `${textSize}`,
