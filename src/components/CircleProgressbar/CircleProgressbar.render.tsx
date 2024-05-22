@@ -75,7 +75,7 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
             width: `${widthSep}`,
             // This needs to be equal to props.strokeWidth
             height: `${strokeWidth}%`,
-            margin: bgPadding*3,
+            margin: bgPadding,
           }}
         >
         </RadialSeparators>
