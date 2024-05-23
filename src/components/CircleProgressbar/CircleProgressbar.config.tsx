@@ -1,6 +1,6 @@
 import { EComponentKind, T4DComponentConfig } from '@ws-ui/webform-editor';
 import { Settings } from '@ws-ui/webform-editor';
-import { TbProgress } from "react-icons/tb";
+import { TbProgress } from 'react-icons/tb';
 
 import CircleProgressbarSettings, { BasicSettings } from './CircleProgressbar.settings';
 

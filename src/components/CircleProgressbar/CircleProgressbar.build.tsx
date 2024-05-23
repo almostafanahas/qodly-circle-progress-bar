@@ -13,7 +13,7 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
 
   return (
     <div ref={connect} style={{height: `${size}`, width: `${size}`}} className={cn(className, classNames)}>
-      <CircularProgressbarWithChildren minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} background={true} backgroundPadding={bgPadding} value={percentage} text={showPercentage ? `${percentage}%` : ''} counterClockwise={counterClockwise}
+      <CircularProgressbarWithChildren circleRatio={1} minValue={minValue} maxValue={maxValue} strokeWidth={strokeWidth} background={true} backgroundPadding={bgPadding} value={percentage} text={showPercentage ? `${percentage}%` : ''} counterClockwise={counterClockwise}
       styles={buildStyles({
         // Rotation of path and trail, in number of turns (0-1)
         // rotation: 0.25,

@@ -37,7 +37,7 @@ const CircleProgressbar: FC<ICircleProgressbarProps> = ({ percentage, showPercen
 
   return (
     <div ref={connect} style={{height: `${size}`, width: `${size}`}} className={cn(className, classNames)}>
-      <CircularProgressbarWithChildren minValue={minValue}
+      <CircularProgressbarWithChildren circleRatio={1} minValue={minValue}
         maxValue={maxValue} 
         strokeWidth={strokeWidth}
         background={true}
