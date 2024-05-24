@@ -70,7 +70,6 @@ export default {
     textSize: "20px",
     counterClockwise: false,
     size: "200px",
-    //style: { height: 200, width: 200 },
     countSep: 0,
     colorSep: "#ffffff",
     widthSep: "2px",
